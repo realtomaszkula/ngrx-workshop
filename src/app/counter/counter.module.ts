@@ -9,6 +9,8 @@ import { StoreModule } from '@ngrx/store';
 import { CounterRoutingModule } from './counter-routing.module';
 import { CounterComponent } from './counter.component';
 import * as fromCounter from './counter.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffects } from './counter.effects';
 
 @NgModule({
   declarations: [CounterComponent],
@@ -21,6 +23,7 @@ import * as fromCounter from './counter.reducer';
     MatInputModule,
     FormsModule,
     StoreModule.forFeature(fromCounter.counterFeatureKey, fromCounter.reducer),
+    EffectsModule.forFeature([CounterEffects]),
   ],
 })
 export class CounterModule {}

@@ -4,7 +4,11 @@ import {
   createSelector,
   on,
 } from '@ngrx/store';
-import { decrement, increment, stepChanged } from './counter.actions';
+import {
+  decrementSuccess,
+  incrementSuccess,
+  stepChanged,
+} from './counter.actions';
 export const counterFeatureKey = 'counter';
 
 export const counterFeature = createFeatureSelector<State>(counterFeatureKey);
@@ -28,13 +32,13 @@ export const initialState: State = {
 
 export const reducer = createReducer<State>(
   initialState,
-  on(increment, (state, action) => {
+  on(incrementSuccess, (state, action) => {
     return {
       ...state,
       count: state.count + state.step,
     };
   }),
-  on(decrement, (state, action) => {
+  on(decrementSuccess, (state, action) => {
     return {
       ...state,
       count: state.count - state.step,
